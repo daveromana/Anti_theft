@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:feng="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        style="@style/text_title_style"
+        android:text="4.恭喜设置完成"/>
+
+
+    <com.jju.feng.anti_theft.ui.SettingItemView
+        android:id="@+id/siv_setup4_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        feng:desc_off="防盗保护未开启"
+        feng:desc_on="防盗保护已开启"
+        feng:title="开启防盗保护">
+
+    </com.jju.feng.anti_theft.ui.SettingItemView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:onClick="linear_setup4_psd"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="设置防盗锁屏密码\n默认密码为1234"/>
+
+        <TextView
+            android:id="@+id/tv_setup4_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="密码是否设置"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dip"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
+        android:background="#66000000">
+    </View>
+
+    <TextView
+        style="@style/text_content_style"
+        android:background="@drawable/btn_default"
+        android:clickable="true"
+        android:onClick="activeAdmin"
+        android:text="点击激活设备超级管理员\n激活后才可以远程锁屏，清除数据"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:src="@android:drawable/presence_invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:src="@android:drawable/presence_invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:src="@android:drawable/presence_invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:src="@android:drawable/presence_online"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/phone"/>
+
+        <Button
+            style="@style/button_pre_style"/>
+
+        <Button
+            style="@style/button_next_style"
+            android:text="设置完成"
+            />
+    </RelativeLayout>
+</LinearLayout>
