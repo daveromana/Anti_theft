@@ -19,7 +19,7 @@ public class BootCompleteReceiver extends BroadcastReceiver {
             Log.i("TAG", "onReceive" + "开启了防盗保护，检查sim卡的状态");
             //1.取出来当前手机的sim卡串号
             TelephonyManager tm = (TelephonyManager) context.getSystemService(context.TELEPHONY_SERVICE);
-            String realsim = tm.getSimSerialNumber();
+            String realsim = tm.getSimSerialNumber()+"123";
             //2.取出之前存的sim卡串号
             String bindsim = sp.getString("sim", "");
             //3.判断两个串号是否一致

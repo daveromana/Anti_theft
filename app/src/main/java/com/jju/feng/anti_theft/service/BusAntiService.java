@@ -62,7 +62,7 @@ public class BusAntiService extends Service {
             //获取光线强度
             float light = event.values[0];
             Log.e("sssssssss", "光强" + light);
-            if (light > 30) {
+            if (light > 50) {
                 count++;
                 if (count == 1) {
                     player.setVolume(1.0f, 1.0f);

@@ -24,15 +24,13 @@ import java.util.TimerTask;
 
 public class HomeActivity extends BaseActivity {
     private String[] module_names = new String[]{"手机防盗", "通讯卫士", "公交防盗", "进程管理",
-            "流量统计", "手机杀毒", "缓存清理", "高级工具", "设置中心"};
+            "定位测试", "设置中心"};
     private int[] module_imgs = new int[]{R.drawable.safe,
             R.drawable.callmsgsafe, R.drawable.app, R.drawable.taskmanager,
-            R.drawable.netmanager, R.drawable.trojan, R.drawable.sysoptimize,
-            R.drawable.atools, R.drawable.settings};
+            R.drawable.netmanager, R.drawable.settings};
     private List<Module> olist = new ArrayList<Module>();
     private GridViewAdapter adapter;
     private GridView gridView;
-    private boolean issetup = false;
     private AlertDialog alertDialog;
     private View view;
     private AlertDialog.Builder dialog;
@@ -44,10 +42,12 @@ public class HomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         init_view();
     }
 
+    /**
+     * gridview的监听事件
+     */
     private AdapterView.OnItemClickListener onItemlistener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -73,14 +73,11 @@ public class HomeActivity extends BaseActivity {
                 case 3:
                     break;
                 case 4:
+                    //测试定位模块
+                    IntentUtils.startActivity(HomeActivity.this, TestLocationActivity.class);
                     break;
+
                 case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
                     //设置中心模块
                     IntentUtils.startActivity(HomeActivity.this, SettingActivity.class);
                     break;
@@ -181,7 +178,9 @@ public class HomeActivity extends BaseActivity {
         alertDialog = dialog.show();
     }
 
-
+    /**
+     * 初始化控件
+     */
     private void init_view() {
         editor = sp.edit();
         gridView = (GridView) findViewById(R.id.gv_home);

@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Window;
 
-import com.jju.feng.anti_theft.R;
 import com.jju.feng.anti_theft.app.MyApplication;
 
 /**

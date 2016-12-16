@@ -13,12 +13,12 @@ public class Setup1Activity extends SetupBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup1);
     }
-
+    //进入下一个界面
     @Override
     public void showNext() {
         IntentUtils.startActivityAndFinish(Setup1Activity.this, Setup2Activity.class);
     }
-
+    //返回上一个界面
     @Override
     public void showPre() {
 

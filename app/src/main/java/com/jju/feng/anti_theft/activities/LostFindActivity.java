@@ -6,12 +6,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.telephony.SmsManager;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jju.feng.anti_theft.R;
 import com.jju.feng.anti_theft.utils.IntentUtils;
+import com.jju.feng.anti_theft.utils.Md5Utils;
 import com.jju.feng.anti_theft.utils.ToastUtils;
 
 import java.util.List;
@@ -40,10 +44,80 @@ public class LostFindActivity extends BaseActivity {
 
     }
 
+    /**
+     * 点击重新设置手机防盗密码
+     *
+     * @param view
+     */
+
+    public void btn_reSetup_psd(View view) {
+        showSetupPasswordDialog();
+    }
+
+
+    /**
+     * 重新进入手机防盗引导页面
+     * @param view
+     */
     public void reEntrySetup(View view) {
         IntentUtils.startActivityAndFinish(this, Setup1Activity.class);
     }
 
+    /**
+     * 设置密码对话框
+     */
+
+    private AlertDialog.Builder dialog;
+    private Button btn_ok, btn_cancel;
+    private EditText et_password;
+    private AlertDialog alertDialog;
+    private View view;
+
+    private void showSetupPasswordDialog() {
+        dialog = new AlertDialog.Builder(this);
+        dialog.setCancelable(false);
+        view = View.inflate(LostFindActivity.this, R.layout.dialog_setup_psd, null);
+        et_password = (EditText) view.findViewById(R.id.et_enter_psd);
+        final EditText et_password_confirm = (EditText) view.findViewById(R.id.et_password_confirm);
+        btn_ok = (Button) view.findViewById(R.id.btn_ok);
+        btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String password = et_password.getText().toString().trim();
+                String password_confirm = et_password_confirm.getText().toString().trim();
+                if (TextUtils.isEmpty(password) || TextUtils.isEmpty(password_confirm)) {
+                    ToastUtils.showToast(LostFindActivity.this, "密码不能为空");
+                } else if (!password.equals(password_confirm)) {
+                    ToastUtils.showToast(LostFindActivity.this, "密码不一致");
+                } else {
+                    if (password.length() >= 6) {
+                        editor.putString("password", Md5Utils.encode(password));
+                        editor.putInt("passwordlength", password.length());
+                        editor.commit();
+                        alertDialog.dismiss();
+                    } else {
+                        ToastUtils.showToast(LostFindActivity.this, "密码不能少于6位");
+                    }
+
+
+                }
+            }
+        });
+        dialog.setView(view);
+        alertDialog = dialog.show();
+    }
+
+    /**
+     * 备份指令，发送短信给安全号码
+     * @param view
+     */
     public void btn_back_command(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(LostFindActivity.this);
         builder.setTitle("提示");
@@ -61,6 +135,11 @@ public class LostFindActivity extends BaseActivity {
         builder.show();
     }
 
+
+    /**
+     * 发送短信的方法
+     * @param message 要发送的内容
+     */
     private void sendSms(final String message) {
         new Thread() {
             @Override

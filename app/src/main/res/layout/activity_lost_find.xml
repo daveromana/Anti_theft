@@ -68,6 +68,17 @@
     <!-- textview默认是不可以被点击的，如果想被点击设置参数android:clickable="true" -->
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30.0dip"
+        android:layout_marginLeft="5dip"
+        android:layout_marginTop="10dip"
+        android:clickable="true"
+        android:onClick="btn_reSetup_psd"
+        android:text="重新设置手机防盗密码"
+        android:textColor="#000"
+        android:textSize="18sp"/>
+
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="30.0dip"
         android:layout_marginLeft="5dip"

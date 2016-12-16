@@ -33,6 +33,9 @@ public class selectContactActivity extends BaseActivity {
         lv_contacts.setOnItemClickListener(listener);
     }
 
+    /**
+     * listview的监听事件
+     */
     private AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
