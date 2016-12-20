@@ -21,7 +21,7 @@ public class Md5Utils {
             byte[] result = digest.digest(text.getBytes());
             StringBuffer sb = new StringBuffer();
             for (byte b : result) {
-                String hex = Integer.toHexString(b & 0xff) + 2;//加盐
+                String hex = Integer.toHexString(b & 0xff);//+ 2;//加盐
                 if (hex.length() == 1) {
                     sb.append("0");
                 }

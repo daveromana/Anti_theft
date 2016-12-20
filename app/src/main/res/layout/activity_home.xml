@@ -20,27 +20,28 @@
         android:textColor="#000"
         android:textSize="20sp"/>
 
-
-    <TextView
-        android:id="@+id/tv_home_prompt"
+    <com.jju.feng.anti_theft.ui.FocusedTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="marquee"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
         android:singleLine="true"
-        android:text="快来下载啦，最新的手机助手来啦，下载送送送"
+        android:text="我是您的手机安全小卫士，我时刻保护您的手机安全，嘎嘎嘎，呱呱呱！！！"
         android:textSize="18sp"/>
 
-
-    <GridView
-        android:id="@+id/gv_home"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="2">
+        android:background="@drawable/bg1"
+        android:orientation="vertical">
 
-    </GridView>
+        <GridView
+            android:id="@+id/gv_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="2"
+            android:verticalSpacing="15dip">
+        </GridView>
+    </LinearLayout>
+
 
 </LinearLayout>

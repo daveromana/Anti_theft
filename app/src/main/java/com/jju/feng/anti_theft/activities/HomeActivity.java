@@ -23,8 +23,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class HomeActivity extends BaseActivity {
-    private String[] module_names = new String[]{"手机防盗", "通讯卫士", "公交防盗", "进程管理",
-            "定位测试", "设置中心"};
+    private String[] module_names = new String[]{"手机防盗", "通讯卫士", "公交防盗", "手机杀毒",
+            "高级工具", "设置中心"};
     private int[] module_imgs = new int[]{R.drawable.safe,
             R.drawable.callmsgsafe, R.drawable.app, R.drawable.taskmanager,
             R.drawable.netmanager, R.drawable.settings};
@@ -71,10 +71,12 @@ public class HomeActivity extends BaseActivity {
                     IntentUtils.startActivity(HomeActivity.this, BusAntiTheftActivity.class);
                     break;
                 case 3:
+                    //手机杀毒模块
+                    IntentUtils.startActivity(HomeActivity.this,AntiVirusActivity.class);
                     break;
                 case 4:
                     //测试定位模块
-                    IntentUtils.startActivity(HomeActivity.this, TestLocationActivity.class);
+                    // IntentUtils.startActivity(HomeActivity.this, TestLocationActivity.class);
                     break;
 
                 case 5:
